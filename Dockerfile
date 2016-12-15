@@ -24,6 +24,11 @@ COPY ./.s2i/bin/ /usr/libexec/s2i
 # Copy the nginx config file
 COPY ./etc/nginx.conf /etc/nginx/conf.d/default.conf
 
+RUN  chmod -R 777 /var/log/nginx /var/cache/nginx/ /var/run \
+     && chmod 644 /etc/nginx/* \
+     && chmod 755 /etc/nginx/conf.d \
+     && chmod 644 /etc/nginx/conf.d/default.conf
+
 # Set to non root user provided by parent image
 USER 1001
 
