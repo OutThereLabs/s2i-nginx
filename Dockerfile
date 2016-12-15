@@ -24,6 +24,9 @@ COPY ./.s2i/bin/ /usr/libexec/s2i
 # Copy the nginx config file
 COPY ./etc/nginx.conf /etc/nginx/conf.d/default.conf
 
+# Set to non root user provided by parent image
+USER 1001
+
 # Expose port 8080
 EXPOSE 8080
 
